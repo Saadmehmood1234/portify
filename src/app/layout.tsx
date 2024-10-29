@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { Sen} from "next/font/google"
+const SenFont=Sen({
+  subsets:['latin'],
+  weight:["400","500","600","700"],
+  display:"swap"
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={SenFont.className}
       >
+        <ThemeProvider attribute="class" defaultTheme="light">
+        <Header/>
         {children}
+        <Footer/>
+        </ThemeProvider>
       </body>
     </html>
   );
