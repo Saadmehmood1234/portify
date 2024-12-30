@@ -70,7 +70,7 @@ const Reviews = () => {
   return (
     <section className="mb-12 xl:mb-32">
       <div className="container mx-auto">
-        <h2 className="section-title mb-12 text-center mx-auto">
+        <h2 className="section-title mb-12 max-sm:text-2xl text-center  mx-auto">
           They say about our work
         </h2>
         <Swiper
@@ -89,9 +89,9 @@ const Reviews = () => {
           {reviewsData.map((person, index) => {
             return (
               <SwiperSlide key={index}>
-                <Card className="p-8 min-h-[300px]">
+                <Card className="p-8 min-h-[300px] hover:bg-tertiary dark:hover:bg-white/10 transition-all duration-700">
                   <CardHeader className="p-0 mb-3">
-                    <div className="flex flex-col items-start gap-x-4">
+                    <div className="flex flex-col items-start gap-x-4 cursor-pointer ">
                       <Image
                         src={person.avatar}
                         width={70}

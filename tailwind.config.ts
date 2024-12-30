@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { DEFAULT_CIPHERS } from "tls";
 
 const config: Config = {
     darkMode: ["class"],
@@ -35,6 +36,9 @@ const config: Config = {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
+			tertiary:{
+				DEFAULT:"hsl(var(--tertiary))"
+			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'
