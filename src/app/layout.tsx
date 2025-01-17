@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Sen} from "next/font/google"
 const SenFont=Sen({
@@ -28,7 +29,8 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
         <Header/>
         {children}
-        {/* <Footer/> */}
+        <Footer/>
+        <Toaster/>
         </ThemeProvider>
       </body>
     </html>
