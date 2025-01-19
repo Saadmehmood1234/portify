@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Fade } from "react-awesome-reveal";
 import Image from "next/image";
 const reviewsData = [
   {
@@ -70,50 +71,66 @@ const Reviews = () => {
   return (
     <section className="mb-12 xl:mb-32">
       <div className="container mx-auto">
-        <h2 className="section-title mb-12 max-sm:text-2xl text-center  mx-auto">
-          They say about our work
-        </h2>
-        <Swiper
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 2 },
-            1400: { slidesPerView: 3 },
-          }}
-          spaceBetween={30}
-          modules={[Pagination]}
-          pagination={{
-            clickable: true,
-          }}
-          className="h-[350px]"
+        <Fade
+          direction="up"
+          delay={400}
+          cascade
+          damping={1e-1}
+          triggerOnce={true}
         >
-          {reviewsData.map((person, index) => {
-            return (
-              <SwiperSlide key={index}>
-                <Card className="p-8 min-h-[300px] hover:bg-tertiary dark:hover:bg-white/10 transition-all duration-700">
-                  <CardHeader className="p-0 mb-3">
-                    <div className="flex flex-col items-start gap-x-4 cursor-pointer ">
-                      <Image
-                        src={person.avatar}
-                        width={70}
-                        height={70}
-                        alt=""
-                        priority
-                        className="mb-2"
-                      />
-                      <div className="flex flex-col">
-                        <CardTitle>{person.name}</CardTitle>
-                        <p className="text-blue-500">{person.job}</p>
+          <h2 className="section-title mb-12 max-sm:text-2xl text-center  mx-auto">
+            They say about our work
+          </h2>
+        </Fade>
+        <Fade
+          direction="up"
+          delay={600}
+          cascade
+          damping={1e-1}
+          triggerOnce={true}
+        >
+          <Swiper
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1400: { slidesPerView: 3 },
+            }}
+            spaceBetween={30}
+            modules={[Pagination]}
+            pagination={{
+              clickable: true,
+            }}
+            className="h-[350px]"
+          >
+            {reviewsData.map((person, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Card className="p-8 min-h-[300px] hover:bg-tertiary dark:hover:bg-white/10 transition-all duration-700">
+                    <CardHeader className="p-0 mb-3">
+                      <div className="flex flex-col items-start gap-x-4 cursor-pointer ">
+                        <Image
+                          src={person.avatar}
+                          width={70}
+                          height={70}
+                          alt=""
+                          priority
+                          className="mb-2"
+                        />
+                        <div className="flex flex-col">
+                          <CardTitle>{person.name}</CardTitle>
+                          <p className="text-blue-500">{person.job}</p>
+                        </div>
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardDescription className=" text-muted-foreground">
-                    {person.review}
-                  </CardDescription>
-                </Card>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+                    </CardHeader>
+                    <CardDescription className=" text-muted-foreground">
+                      {person.review}
+                    </CardDescription>
+                  </Card>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </Fade>
       </div>
     </section>
   );
